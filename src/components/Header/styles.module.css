@@ -1,0 +1,22 @@
+
+.containerHeader{
+    background:rgb(222, 222, 222);
+    color: rgb(74, 74, 74);
+    width: 100%;
+}
+
+.headerContent{
+    height: 60px;
+    max-width: 1920px;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    justify-content: center;
+    font-size: 24px;
+    text-transform: uppercase;
+}
+
+.logo{
+    width: 9rem;
+}
+
