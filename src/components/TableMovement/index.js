@@ -1,39 +1,20 @@
-import React from "react";
+import React from 'react'
 
-const Process = ({ title, area }) => {
+const TableMovement = () => {
   return (
-    <div className="p-4">
-      <div className="bg-white shadow-md rounded-s px-4 py-5">
-        <div classNamee="flex flex-col justify-center">
-          <span className="text-red-700 uppercase font-bold">{title}</span>
-          <span className="text-gray-500 my-4">{area}</span>
-        </div>
-        <div className="flex flex-col my-4">
-          <span className="text-sm font-bold text-gray-800">
-            Detalhes do processo
-          </span>
-          <div className=" flex flex-col mt-4">
-            <span className="text-sm font-sm text-gray-400">
-              CIVEL CUMPRIMENTO DE SENTENCA - DIREITO DO CONSUMIDOR /
-            </span>
-            <span className="text-sm font-sm text-gray-400">
-              RESPONSABILIDADE DO FORNECEDOR / INDENIZAÇÃO POR DANO MORAL /
-            </span>
-            <span className="text-sm font-sm text-gray-400">
-              INCLUSÃO INDEVIDA EM CADASTRO DE INADIMPLENTE
-            </span>
-          </div>
-        </div>
-       {/* Initial Table */}
-        <div className="flex flex-col">
-          <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
-            <div className="py-4 inline-block min-w-full sm:px-6 lg:px-8">
+    <>
+     
+       <div className="flex flex-col mb-16">
+          <div className="overflow-x-auto lg:-mx-4 md:-mx-2 min-w-full min-h-full">
+            <div className="py-4 md:py-2 inline-block min-w-full md:px-2 lg:px-4">
               <div className="mb-4">
-                <span className="text-lg font-semibold">Movimentações</span>
+                <span className="text-lg font-semibold">
+                  (movs)Movimentações
+                </span>
               </div>
-              <div className="rounded-md">
+              <div className="overflow-hidden rounded-lg">
                 <table className="min-w-full text-center ">
-                  <thead className="border-b bg-red-700">
+                  <thead className="border-b bg-red-800 md:px-2 lg:px-4">
                     <tr>
                       <th
                         scope="col"
@@ -98,10 +79,9 @@ const Process = ({ title, area }) => {
             </div>
           </div>
         </div>
-        {/* Finally Table */}
-      </div>
-    </div>
-  );
-};
+       
+    </>
+  )
+}
 
-export default Process;
+export default TableMovement

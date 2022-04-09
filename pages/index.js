@@ -2,30 +2,37 @@ import React, { useState } from "react";
 import axios from "axios";
 
 import Header from "../src/components/Header";
-import Process from "../src/components/process";
+import ResultProcess from "../src/components/ResultProcess";
+import TableProcess from "../src/components/TableProcess";
+import TableMovement from "../src/components/TableMovement";
+import Loading from "../src/components/Loading";
 
 const Search = () => {
   const [numberProcess, setNumberProcess] = useState("");
   const [process, setProcess] = useState();
+  const [loading, setLoading] = useState(false);
 
   async function handleSearchProcess(event) {
     event.preventDefault();
-    const key = "bdbd1c2a-28f2-428e-b83a-ef42fb1c4018";
+    setLoading(true);
+    const key = "23c77e25-caf1-4a7b-996d-843101b6a177";
     try {
       const response = await axios.get(
         `/${numberProcess}?tipo_numero=8&api_key=${key}`
       );
       setNumberProcess("");
       setProcess(response.data);
-      console.log("Response", response.data);
+      setLoading(false);
+  
     } catch (err) {
       console.log(err);
       setNumberProcess("");
     }
+   
     
   }
 
-  console.log("Retorna o q?", process);
+  console.log("Processos", process);
 
   return (
     <>
@@ -33,7 +40,7 @@ const Search = () => {
       <div className="p-4">
         <form onSubmit={handleSearchProcess} className="flex flex-col bg-white px-4 py-5 space-y-6 sm:p-6 shadow-md justify-center items-center">
           <h1 className="text-red-700 text-lg font-semibold">
-            Busque aqui seu processo no Tribunal
+            Busque aqui seu processo no tribunal
           </h1>
           <div className="flex items-center border-b-2 border-red-700 py-2">  
           <input
@@ -49,16 +56,29 @@ const Search = () => {
           </div>
         </form>
       </div>
-      {/* { process && process?.map((process, index) => (
-        <Process
+      <div className="p-4">
+      <div className="bg-white shadow-md rounded-s px-4 py-5">
+      <Loading loading={loading} />
+      <ResultProcess/>
+      {/* {process && process?.map((process, index) => (
+        <ResultProcess
           key={index}
           title={process.numero}
-          subTitle={process.area}
+          subtitle={process.area}
+          date={process.alteradoEm}
+          details={process.classeNatureza}
+          subject={process.assuntoExtra}
         />
 
-      ))} */}
+      ))}  */}
 
-      <Process/>
+      <TableProcess/>
+
+      <TableMovement/>
+
+      </div>
+      </div>
+
      
     </>
   );
