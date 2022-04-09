@@ -40,43 +40,6 @@ const TableProcess = (props) => {
           );
         })}
         </div>
-
-        {/* <div className="bg-gray-400 w-full h-full sm:flex md:block">
-                <span className="w-full flex justify-center items-center px-5 py-2 hover:bg-gray-500 focus:outline-none">
-                  <span>Número do processo</span>
-                </span>
-                <span className="w-full flex justify-center items-center px-5 py-2 hover:bg-gray-500 focus:outline-none">
-                  <span>Data de Distribuição</span>
-                </span>
-                <span className="w-full flex justify-center items-center px-5 py-2 hover:bg-gray-500 focus:outline-none">
-                  <span>Tribunal</span>
-                </span>
-                <span className="w-full flex justify-center items-center px-5 py-2 hover:bg-gray-500 focus:outline-none">
-                  <span>Natureza</span>
-                </span>
-              </div> */}
-
-        {/* <div className="w-full">
-              <div className="top flex items-center px-5 h-16 bg-gray-600 text-white text-2xl" />
-
-                <div className="w-full px-5 py-3 max-h-screen overflow-y-auto">
-                    <div id="view-1">
-                    5001682-88.2020.8.13.0672
-                    <hr className="my-2 border-gray-500" />
-                    </div>
-                    <div id="view-2">
-                    12/02/2020
-                    <hr className="my-2 border-gray-500" />
-                    </div>
-                    <div id="view-3">
-                    TJMG
-                    <hr className="my-2 border-gray-500" />
-                    </div>
-                    <div id="view-4">
-                    CIVEL PROCEDIMENTO DO JUIZADO ESPECIAL CIVEL
-                </div>
-              </div>
-            </div> */}
       </div>
     </>
   );
