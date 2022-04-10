@@ -4,7 +4,8 @@ const Process = ({
   title,
   titleSecondary,
   subtitle,
-  date,
+  dateCreated,
+  dateChanged,
   details,
   subject,
 }) => {
@@ -15,8 +16,8 @@ const Process = ({
           {title}
         </span>
         <span className="mt-2">{titleSecondary}</span>
-
-        <span className="text-gray-500 mt-2 mb-8">{date}</span>
+        <span className="text-gray-500 mt-2">Criado em: {dateCreated}</span>
+        <span className="text-gray-500  mb-8">Alterado em:{dateChanged}</span>
       </div>
       <div className="flex flex-col my-4">
         <span className="text-lg font-bold ">Detalhes do processo</span>

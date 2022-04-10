@@ -1,4 +1,5 @@
 import React from "react";
+import { format } from 'date-fns'
 
 const TableProcess = (props) => {
   return (
@@ -21,7 +22,7 @@ const TableProcess = (props) => {
                         {item.numero}
                       </p>
                       <p className="focus:outline-none text-sm leading-normal pt-2 text-gray-500">
-                        {item.distribuicao_data}
+                        {format(new Date(item.distribuicao_data), 'dd/MM/yyyy')}
                       </p>
                     </div>
                   </div>

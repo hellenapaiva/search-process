@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+
 const TableMovement = (props) => {
   const [page, setPage] = useState(0);
   const pageSize = 10;
@@ -40,13 +41,13 @@ const TableMovement = (props) => {
                     </th>
                     <th
                       scope="col"
-                      className="text-sm font-medium text-white px-6 py-4"
+                      className="text-md font-medium text-white px-6 py-4"
                     >
                       Tipos
                     </th>
                     <th
                       scope="col"
-                      className="text-sm font-medium text-white px-6 py-4"
+                      className="text-md font-medium text-white px-6 py-4"
                     >
                       Texto
                     </th>

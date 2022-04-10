@@ -1,21 +1,25 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { format } from "date-fns";
 
 import Header from "../src/components/Header";
 import ResultProcess from "../src/components/ResultProcess";
 import TableProcess from "../src/components/TableProcess";
 import TableMovement from "../src/components/TableMovement";
 import Loading from "../src/components/Loading";
+import { formatCnj } from "../src/utils/maskCnj";
+import Modal from "../src/components/Modal";
 
 const Search = () => {
   const [numberProcess, setNumberProcess] = useState("");
   const [process, setProcess] = useState({});
   const [loading, setLoading] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   async function handleSearchProcess(event) {
     event.preventDefault();
     setLoading(true);
-    const key = "35327db7-c43c-44c5-ad7c-1f74afde4c3e";
+    const key = "46cf74aa-2812-4eab-a1a5-2afa654d94d6";
     try {
       const response = await axios.get(
         `/${numberProcess}?tipo_numero=8&api_key=${key}`
@@ -26,10 +30,10 @@ const Search = () => {
     } catch (err) {
       console.log(err);
       setNumberProcess("");
+      setLoading(false);
+      setShowModal(true);
     }
   }
-
-  console.log("Processos", process);
 
   return (
     <>
@@ -47,8 +51,9 @@ const Search = () => {
               type="text"
               value={numberProcess}
               placeholder="Digite o CNJ do processo..."
-              onChange={(e) => setNumberProcess(e.target.value)}
+              onChange={(e) => setNumberProcess(formatCnj(e.target.value))}
               className="border-none mr-2 p-3 leading-tight focus:outline-none mt-2"
+              required
             />
             <button
               type="submit"
@@ -59,7 +64,9 @@ const Search = () => {
           </div>
         </form>
       </div>
+
       <Loading loading={loading} />
+
       {process.numero && (
         <div className="p-4">
           <div className="bg-white shadow-md rounded-s px-4 py-5">
@@ -67,10 +74,13 @@ const Search = () => {
               title={`${process.tribunal} - ${process.numero}`}
               titleSecondary={process.foro}
               subtitle={process.area}
-              date={process.alteradoEm}
+              dateCreated={format(new Date(process.criadoEm), "dd/MM/yyyy")}
+              dateChanged={format(new Date(process.alteradoEm), "dd/MM/yyyy")}
               details={process.classes}
               subject={process.classeNatureza}
             />
+
+            {showModal && <Modal closeModal={() => setShowModal(false)} />}
 
             <TableProcess data={process.processosRelacionados || []} />
 

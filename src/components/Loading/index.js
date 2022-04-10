@@ -6,9 +6,16 @@ const Loading = (props) => {
     return <div></div>;
   }
   return (
-    <div className=" flex justify-center items-center animate-spin  border-b-transparent">
-      <CgSpinnerAlt loading={props.loading} size={60} color="#a11d29" className="w-full w-24 h-24"/>
-    </div>
+    
+      <div className=" flex justify-center items-center animate-spin  border-b-transparent">
+        <CgSpinnerAlt
+          loading={props.loading}
+          size={60}
+          color="#a11d29"
+          className="w-full h-24"
+        />
+      </div>
+   
   );
 };
 
