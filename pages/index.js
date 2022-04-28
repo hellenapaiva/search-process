@@ -19,7 +19,7 @@ const Search = () => {
   async function handleSearchProcess(event) {
     event.preventDefault();
     setLoading(true);
-    const key = "46cf74aa-2812-4eab-a1a5-2afa654d94d6";
+    const key = "2c8ecc95-d86e-45af-ade9-2b049b1e866b";
     try {
       const response = await axios.get(
         `/${numberProcess}?tipo_numero=8&api_key=${key}`
@@ -27,11 +27,13 @@ const Search = () => {
       setNumberProcess("");
       setProcess(response.data);
       setLoading(false);
+      if (response.data.status_op == "Processo não encontrado") {
+        setShowModal(true);
+      }
     } catch (err) {
       console.log(err);
       setNumberProcess("");
       setLoading(false);
-      setShowModal(true);
     }
   }
 
@@ -80,14 +82,13 @@ const Search = () => {
               subject={process.classeNatureza}
             />
 
-            {showModal && <Modal closeModal={() => setShowModal(false)} />}
-
             <TableProcess data={process.processosRelacionados || []} />
 
             <TableMovement data={process.movs || []} />
           </div>
         </div>
       )}
+      {showModal && <Modal closeModal={() => setShowModal(false)} />}
     </>
   );
 };
